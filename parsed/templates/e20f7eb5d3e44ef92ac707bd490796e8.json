@@ -1,1 +1,0 @@
-{"components/papa-supermarket/common/global-vars":"{{assignVar 'productCardImageSizeAttrs' (get 'string' (concat 'width=' (join (split theme_settings.productgallery_size 'x') ' height=')))}}\n"}
