@@ -80,10 +80,7 @@
                         {{/if}}
                     {{/each}}
                 {{/if}}
-            
             </div>
-
-
         </a>
         <figcaption class="card-figcaption">
             <div class="card-figcaption-body">
@@ -157,13 +154,13 @@
         </div>
 
         {{#if theme_settings.show_sku}}
-            {{#if sku}}
-            <div class="card-text card-text--sku" data-test-info-type="sku">
-                SKU: {{{sku}}}  
-            </div>
-            {{/if}}
+        {{#if sku}}
+        <div class="card-text card-text--sku" data-test-info-type="sku">
+            {{{sku}}}
+        </div>
         {{/if}}
-        
+        {{/if}}
+
         {{#if show_info}}
         {{#if show_info '!==' 'hide'}}
             <dl class="card-info">

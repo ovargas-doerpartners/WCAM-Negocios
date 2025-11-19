@@ -44,9 +44,9 @@
     <div class="emthemesModez-header-userSection emthemesModez-header-userSection--logo-{{theme_settings.logo-position}}"{{#if theme_settings.header_sticky '===' 'search'}} data-stickymenu{{/if}}>
         <div class="container">
             {{#if template_file '===' 'pages/home'}}
-                <h1 class="header-logo header-logo--{{theme_settings.logo-position}}">
+                <div class="header-logo header-logo--{{theme_settings.logo-position}}">
                     {{> components/common/store-logo}}
-                </h1>
+                </div>
             {{else}}
                 <div class="header-logo header-logo--{{theme_settings.logo-position}}">
                     {{> components/common/store-logo}}

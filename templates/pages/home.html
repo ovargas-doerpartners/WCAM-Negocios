@@ -42,4 +42,79 @@ shop_by_brand:
     {{> layout/instantload-base}}
 {{else}}
     {{> layout/base}}
+    <!-- ===== Bloque SEO oculto solo para motores de búsqueda ===== -->
+    <div class="seo-hidden">
+    
+      <h1>WCAM | Tecnología, seguridad, redes y accesorios en un solo lugar</h1>
+    
+      <section id="soluciones-tecnologicas">
+        <h2>Soluciones tecnológicas para hogares y empresas</h2>
+        <p>Descubre productos innovadores y confiables en tecnología, redes y seguridad diseñados para mejorar tu vida y proteger tus espacios.</p>
+      </section>
+    
+      <section id="seguridad-vigilancia">
+        <h2>Sistemas de seguridad y vigilancia inteligentes</h2>
+        <h3>Cámaras IP, CCTV y kits completos</h3>
+        <h3>Alarmas, sensores y cercas eléctricas</h3>
+        <h3>Control de acceso y videovigilancia remota</h3>
+      </section>
+    
+      <section id="redes-conectividad">
+        <h2>Redes, conectividad y cableado profesional</h2>
+        <h3>Cableado UTP y fibra óptica</h3>
+        <h3>Routers, switches y extensores WiFi</h3>
+        <h3>Herramientas y accesorios de instalación</h3>
+      </section>
+    
+      <section id="accesorios-energia">
+        <h2>Accesorios electrónicos y energía</h2>
+        <h3>Iluminación LED interior y exterior</h3>
+        <h3>Paneles solares y controladores</h3>
+        <h3>Domótica y automatización inteligente</h3>
+      </section>
+    
+      <section id="marcas-lideres">
+        <h2>Marcas líderes en tecnología</h2>
+        <p>Hikvision, Dahua, ZKTeco, TP-Link, Commscope, Volteck y más.</p>
+      </section>
+    
+      <section id="porque-elegirnos">
+        <h2>¿Por qué elegir WCAM?</h2>
+        <h3>Envíos a todo México</h3>
+        <h3>Garantía en todos los productos</h3>
+        <h3>Atención personalizada</h3>
+      </section>
+    
+      <section id="productos-destacados">
+        <h2>Productos destacados</h2>
+        <h3>Nuevos lanzamientos</h3>
+        <h3>Más vendidos</h3>
+        <h3>Ofertas especiales</h3>
+      </section>
+    
+      <section id="contacto">
+        <h2>Contáctanos y recibe asesoría personalizada</h2>
+        <h3>WhatsApp y atención telefónica</h3>
+        <h3>Visítanos en nuestra tienda</h3>
+        <h3>Formulario de contacto</h3>
+      </section>
+    
+    </div>
+    
+    <!-- CSS para ocultar visualmente el bloque sin afectar el SEO -->
+    <style>
+      .seo-hidden {
+        position: absolute !important;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+    </style>
+    <!-- ===== Fin del bloque SEO oculto ===== -->
+
 {{/and}}

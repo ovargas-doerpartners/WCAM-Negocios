@@ -216,73 +216,59 @@
                         {{#if theme_settings.product_image_responsive}}
                             {{#each product.images}}
                                 <li class="productView-imageCarousel-main-item{{#startsWith this.data ../product.main_image.data}} slick-current{{/startsWith}}">
-                                    <div style="position: relative; display: inline-block; overflow: visible;">
-                                        
-                                        {{!-- Cinta lateral solo si el campo personalizado "etapa" es "Nuevo" --}}
-                                        {{#each ../../custom_fields}}
-                                            {{#if (and (eq name "etapa") (eq value "Nuevo"))}}
-                                                <span style="
-                                                    position: absolute;
-                                                    top: 15px;
-                                                    left: -55px;
-                                                    background-color: #28a745;
-                                                    color: white;
-                                                    font-weight: bold;
-                                                    font-size: 1rem;
-                                                    padding: 8px 70px;
-                                                    text-align: center;
-                                                    transform: rotate(-45deg);
-                                                    z-index: 1000;
-                                                    box-shadow: 0 3px 8px rgba(0,0,0,0.25);
-                                                ">
-                                                    NUEVO
-                                                </span>
-                                            {{/if}}
-                                        {{/each}}
-                                        <a href="{{getImageSrcset this 'zoom_size' (cdn ../theme_settings.default_image_product) 1x=../theme_settings.zoom_size}}&amp;imbypass=on"
-                                            data-original-zoom="{{getImageSrcset this 'zoom_size' (cdn ../theme_settings.default_image_product) 1x=../theme_settings.zoom_size}}&amp;imbypass=on"
-                                            data-original-img="{{getImageSrcset this 'product_size' (cdn ../theme_settings.default_image_product) 1x=../theme_settings.product_size}}"
-                                            data-original-srcset="{{getImageSrcset this use_default_sizes=true }}">
-                                
-                                            {{#startsWith this.data ../product.main_image.data}}
-                                                {{!-- First image loads default quality image --}}
-                                                {{#if ../../theme_settings.lazyload_mode '==' 'lazyload'}}
-                                                    {{> components/common/responsive-img
-                                                        image=this
-                                                        fallback_size=../../../theme_settings.product_size
-                                                        lazyload='disabled'
-                                                        default_image=../../../theme_settings.default_image_product
-                                                        lqip_size=../../../theme_settings.product_size
-                                                        otherAttributes=(getVar 'productImageSizeAttrs')
-                                                    }}
-                                                {{else}}
-                                                    {{> components/common/responsive-img
-                                                        image=this
-                                                        fallback_size=../../../theme_settings.product_size
-                                                        lazyload=../../theme_settings.lazyload_mode
-                                                        default_image=../../../theme_settings.default_image_product
-                                                        lqip_size=../../../theme_settings.product_size
-                                                        otherAttributes=(getVar 'productImageSizeAttrs')
-                                                    }}
-                                                {{/if}}
+                                    <a href="{{getImageSrcset this 'zoom_size' (cdn ../theme_settings.default_image_product) 1x=../theme_settings.zoom_size}}&amp;imbypass=on"
+                                        data-original-zoom="{{getImageSrcset this 'zoom_size' (cdn ../theme_settings.default_image_product) 1x=../theme_settings.zoom_size}}&amp;imbypass=on"
+                                        data-original-img="{{getImageSrcset this 'product_size' (cdn ../theme_settings.default_image_product) 1x=../theme_settings.product_size}}"
+                                        data-original-srcset="{{getImageSrcset this use_default_sizes=true }}">
+                                        {{#startsWith this.data ../product.main_image.data}}
+                                            {{!-- First image loads default quality image --}}
+                                            {{#if ../../theme_settings.lazyload_mode '==' 'lazyload'}}
+                                                {{!-- Disable lazyload for the first image if mode is not lazyload+lqip --}}
+                                                {{> components/common/responsive-img
+                                                    image=this
+                                                    fallback_size=../../../theme_settings.product_size
+                                                    lazyload='disabled'
+                                                    default_image=../../../theme_settings.default_image_product
+                                                    lqip_size=../../../theme_settings.product_size
+                                                    otherAttributes=(getVar 'productImageSizeAttrs')
+                                                }}
                                             {{else}}
                                                 {{> components/common/responsive-img
                                                     image=this
-                                                    fallback_size=../../theme_settings.product_size
+                                                    fallback_size=../../../theme_settings.product_size
                                                     lazyload=../../theme_settings.lazyload_mode
-                                                    default_image=../../theme_settings.default_image_product
+                                                    default_image=../../../theme_settings.default_image_product
+                                                    lqip_size=../../../theme_settings.product_size
                                                     otherAttributes=(getVar 'productImageSizeAttrs')
                                                 }}
-                                            {{/startsWith}}
-                                        </a>
-                                    </div>
+                                            {{/if}}
+                                        {{else}}
+                                            {{> components/common/responsive-img
+                                                image=this
+                                                fallback_size=../../theme_settings.product_size
+                                                lazyload=../../theme_settings.lazyload_mode
+                                                default_image=../../theme_settings.default_image_product
+                                                otherAttributes=(getVar 'productImageSizeAttrs')
+                                            }}
+                                        {{/startsWith}}
+                                    </a>
                                 </li>
-
                             {{/each}}
                         {{else}}
-                            {{#each product.images}} <li class="productView-imageCarousel-main-item{{#startsWith this.data ../product.main_image.data}} slick-current{{/startsWith}}"> <a href="{{getImage this 'zoom_size' (cdn ../theme_settings.default_image_product)}}?imbypass=on" data-original-zoom="{{getImage this 'zoom_size' (cdn ../theme_settings.default_image_product)}}?imbypass=on" data-original-img="{{getImage this 'product_size' (cdn ../theme_settings.default_image_product)}}" data-original-srcset=""> {{#if @index '===' 0}} <img src="{{getImage this 'product_size' (cdn ../../theme_settings.default_image_product)}}" alt="{{this.alt}}" title="{{this.alt}}" {{getVar 'productImageSizeAttrs'}}> {{else}} <img data-lazy="{{getImage this 'product_size' (cdn ../../theme_settings.default_image_product)}}" alt="{{this.alt}}" title="{{this.alt}}" {{getVar 'productImageSizeAttrs'}}> {{/if}} </a> </li> {{/each}}
-
-
+                            {{#each product.images}}
+                                <li class="productView-imageCarousel-main-item{{#startsWith this.data ../product.main_image.data}} slick-current{{/startsWith}}">
+                                    <a href="{{getImage this 'zoom_size' (cdn ../theme_settings.default_image_product)}}?imbypass=on"
+                                        data-original-zoom="{{getImage this 'zoom_size' (cdn ../theme_settings.default_image_product)}}?imbypass=on"
+                                        data-original-img="{{getImage this 'product_size' (cdn ../theme_settings.default_image_product)}}"
+                                        data-original-srcset="">
+                                        {{#if @index '===' 0}}
+                                            <img src="{{getImage this 'product_size' (cdn ../../theme_settings.default_image_product)}}" alt="{{this.alt}}" title="{{this.alt}}" {{getVar 'productImageSizeAttrs'}}>
+                                        {{else}}
+                                            <img data-lazy="{{getImage this 'product_size' (cdn ../../theme_settings.default_image_product)}}" alt="{{this.alt}}" title="{{this.alt}}" {{getVar 'productImageSizeAttrs'}}>
+                                        {{/if}}
+                                    </a>
+                                </li>
+                            {{/each}}
                         {{/if}}
                         {{#if theme_settings.productpage_videos_position '===' 'images'}}
                             {{#each product.videos.list}}

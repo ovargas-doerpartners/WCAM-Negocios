@@ -41,7 +41,7 @@
         }
 
         @include breakpoint("medium") {
-            padding: spacing("half");
+            padding: spacing("half") * 1.7;
 
             &:hover .card-buttons {
                 visibility: visible;

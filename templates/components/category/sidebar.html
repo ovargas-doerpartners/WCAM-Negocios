@@ -29,7 +29,7 @@
             products_per_page=theme_settings.categorypage_products_per_page
             id_prefix="sb"
         }}
-        {{> components/faceted-search/index category}}
+        {{> components/faceted-search/index category customer=customer}}
     {{else}}
         {{#if theme_settings.show_shop_by_price}}
             {{> components/category/shop-by-price shop_by_price=category.shop_by_price category_url=category.url}}

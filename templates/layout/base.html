@@ -139,6 +139,68 @@
         {{{snippet 'htmlhead'}}}
 
         {{#block "head-last"}} {{/block}}
+        <meta property="og:title" content="WcamNegocios" />
+        <meta property="og:description" content="WCAM ofrece cámaras, alarmas, redes y accesorios electrónicos. Variedad y calidad en tecnología y sistemas de seguridad con envío a todo México." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://wcamnegocios.com/" />
+        <meta property="og:image" content="https://cdn11.bigcommerce.com/s-misgix1hxt/images/stencil/original/image-manager/banner-wcam-mesa-de-trabajo.jpg?t=1760122421" />
+        <meta property="og:image:alt" content="Wcam portada" />
+        <meta property="og:locale" content="es_MX" />
+        <meta property="og:site_name" content="WcamNegocios" />
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="WcamNegocios" />
+        <meta name="twitter:description" content="WCAM ofrece cámaras, alarmas, redes y accesorios electrónicos. Variedad y calidad en tecnología y sistemas de seguridad con envío a todo México." />
+        <meta name="twitter:image" content="https://cdn11.bigcommerce.com/s-misgix1hxt/images/stencil/original/image-manager/banner-wcam-mesa-de-trabajo.jpg?t=1760122421" />
+        <meta name="twitter:image:alt" content="Wcam portada" />
+        <meta name="twitter:site" content="@WcamNegocios" />
+
+        
+        <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              "name": "Wcamnegocios",
+              "url": "https://wcamnegocios.com/",
+              "image": "https://cdn11.bigcommerce.com/s-misgix1hxt/images/stencil/500w/logowcam3_1760055870__69507.original.png",
+              "description": "WCAM ofrece cámaras, alarmas, redes y accesorios electrónicos. Variedad y calidad en tecnología y sistemas de seguridad con envío a todo México.",
+              "telephone": "+52 2229651144",
+              "email": "soporte@wcamnegocios.com",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Av 25 Pte 311, Héroe de Nacozari",
+                "addressLocality": "Heroica Puebla de Zaragoza",
+                "addressRegion": "Puebla",
+                "postalCode": "72423",
+                "addressCountry": "MX"
+              },
+              "openingHours": [
+                "Mo-Fr 09:00-19:00",
+                "Sa-Su 09:00-15:00"
+              ],
+              "priceRange": "$$",
+              "sameAs": [
+                "https://www.facebook.com/wcamnegocios",
+                "https://www.instagram.com/wcamnegocios",
+                "https://www.linkedin.com/company/wcamnegocios"
+              ],
+              "founder": {
+                "@type": "Person",
+                "name": "Wcamnegocios"
+              },
+              "department": {
+                "@type": "Store",
+                "name": "WCAM Tienda en línea",
+                "url": "https://wcamnegocios.com/"
+              },
+              "areaServed": {
+                "@type": "Country",
+                "name": "México"
+              }
+            }
+        </script>
+
+
     </head>
     <body class="csscolumns papaSupermarket-layout--{{theme_settings.layout}}
         papaSupermarket-style--{{theme_settings.style}}
@@ -182,5 +244,22 @@
             {{{footer.scripts}}}
         {{/if}}
         {{{snippet 'footer'}}}
+        {{#unless customer}}
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                  const observer = new MutationObserver(() => {
+                    const priceElements = document.querySelectorAll('.dfd-card-pricing');
+                    if (priceElements.length > 0) {
+                      priceElements.forEach(el => {
+                        el.style.display = 'none';
+                      });
+                    }
+                  });
+                
+                  observer.observe(document.body, { childList: true, subtree: true });
+                });
+            </script>
+        {{/unless }} 
+
     </body>
 </html>

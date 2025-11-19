@@ -42,7 +42,13 @@
             <div class="accordion accordion--navList">
                 {{#each facets}}
                     {{#if visible}}
-                        {{{dynamicComponent 'components/faceted-search/facets'}}}
+                        {{#eq type "range"}}
+                            {{#if ../../../customer}}
+                                {{{dynamicComponent 'components/faceted-search/facets'}}}
+                            {{/if}}
+                        {{else}}
+                            {{{dynamicComponent 'components/faceted-search/facets'}}}
+                        {{/eq}}
                     {{/if}}
                 {{/each}}
             </div>
