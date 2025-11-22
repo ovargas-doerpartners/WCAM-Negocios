@@ -831,6 +831,8 @@ export class ProductCardsGraphQLQuery {
                 outOfStockMessage: !node.inventory.isInStock ? siteSettings.inventory.defaultOutOfStockMessage : '',
                 qtyBoxHtml: this.show_product_quantity_box ? this.qtyBoxHtmlFunc(node.entityId, node.minPurchaseQuantity, node.maxPurchaseQuantity, this.txtQuantity, this.txtQuantityDecrease, this.txtQuantityIncrease) : '',
                 show_compare: siteSettings.storefront.catalog.productComparisonsEnabled,
+                stock_level: (node.inventory && node.inventory.aggregated && node.inventory.aggregated.availableToSell) || 0,
+
             }));
 
         return products;
@@ -1003,7 +1005,14 @@ export const productCardTemplate = `
                 </div>
             {{/restrictToLogin}}
 
-
+            {{#stock_level}}
+                 <div class="card-text card-text--stock">
+                    <label class="card-info-name">
+                        <span data-product-stock>Cantidad actual de existencias: {{stock_level}}</span>
+                    </label>
+                </div>
+            {{/stock_level}}
+        
             {{#card_show_sku}}
                 {{#sku}}
                     <div class="card-text card-text--sku" data-test-info-type="sku">

@@ -139,6 +139,13 @@
             </p>
         {{/and}}
 
+         <div class="card-text card-text--stock {{#unless stock_level}} u-hiddenVisually{{/unless}}">
+            <label class="card-info-name">
+                {{lang 'products.current_stock'}}
+                <span data-product-stock>{{stock_level}}</span>
+            </label>
+        </div>
+
         <div class="card-text card-text--price" data-test-info-type="price">
             {{#or customer (unless settings.hide_price_from_guests)}}
                 {{> components/products/price price=price customer=customer}}

@@ -123,6 +123,9 @@ export class CategoryProductsGraphQLQuery extends SupermarketProductCardsGraphQL
                                                     }
                                                     inventory {
                                                         isInStock
+                                                        aggregated {
+                                                            availableToSell
+                                                        }
                                                     }
                                                     customFields {
                                                         edges {
